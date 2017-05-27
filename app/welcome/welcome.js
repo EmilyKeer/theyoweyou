@@ -28,7 +28,8 @@ angular.module('webApp.welcome', ['ngRoute', 'firebase'])
 		var ref = firebase.database().ref().child('Articles/' + id);
 		ref.update({
 			title: $scope.editPostData.title,
-			post: $scope.editPostData.post
+			post: $scope.editPostData.post,
+			user: $scope.editPostData.user
 		}).then(function(ref){
 			$scope.$apply(function(){
 				$("#editModal").modal('hide');

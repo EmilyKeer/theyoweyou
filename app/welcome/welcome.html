@@ -31,6 +31,7 @@
 		<div class="col-md-12 well well-sm">
 			<h4>{{article.title}}</h4>
 			<p>{{article.post}}</p>
+			<p>{{article.user}}</p>
 			<button type="submit" class="btn btn-sm btn-primary" ng-click="editPost(article.$id)" data-target="#editModal" data-toggle="modal">Edit</button>
 			<button type="submit" class="btn btn-sm btn-danger" ng-click="deleteCnf(article)" data-target="#deleteModal" data-toggle="modal">Delete</button>
 		</div>
@@ -53,6 +54,10 @@
 						<div class="form-group">
 							<label for="post">Post</label>
 							<textarea name="post" class="form-control" ng-model="editPostData.post"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="title">User</label>
+							<input type="text" name="title" class="form-control" ng-model="editPostData.user" />
 						</div>
 					</form>
 				</div>
