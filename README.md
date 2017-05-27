@@ -16,6 +16,10 @@ With TheyOweYou, our aim is to offer a tool for roommates to keep track of those
 ![Login](https://github.com/EmilyKeer/theyoweyou/blob/master/screenshots/login.png)
 **Dashboard for your room here!**
 ![Home](https://github.com/EmilyKeer/theyoweyou/blob/master/screenshots/home.png)
+**See more details for the item!**
+![add](https://github.com/EmilyKeer/theyoweyou/blob/master/screenshots/add.PNG)
+**Have a look at the overview of your roommates' stuff!**
+![add](https://github.com/EmilyKeer/theyoweyou/blob/master/screenshots/roommate.PNG)
 
 ## How we built it
 TheyOweYou is a Web App built using `HTML`, `CSS` and `JavaScript` on the frontend, `Angular.js` and `Firebase` on the backend.
