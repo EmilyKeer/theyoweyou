@@ -34,10 +34,12 @@
 			<div style="margin-top: 5px;">
 			<h4 style="display: inline;">Weekly Chores</h4><button style="display: inline; margin-left: 10px; color: rgb(0,0,0);">Add items</button>
 			</div>
-			<h5>name</h5>
-			<p class="list">${{item1}</p>
+			<div ng-repeat="chore in chores">
+				<p class="list">{{chore.type}}</h4>
+			</div>
+			<!--<p class="list">${{item1}</p>
 			<p class="list">{{item2}}</p>
-			<p class="list">{item3}}</p>
+			<p class="list">{item3}}</p>-->
 		</div>
 	</div>
 	<div style="float:right; width: 45%; margin-left: 1%; margin-right: 4%;">
@@ -45,19 +47,17 @@
 			<div style="margin-top: 5px;">
 			<h4 style="display: inline;">You owe them</h4><a href="#/addPost"  style="display: inline; margin-left: 10px; color: rgb(0,0,0);">Add items</a>
 			</div>
-			<h5>name</h5>
-			<p class="list">${{item1}</p>
-			<p class="list">{{item2}}</p>
-			<p class="list">{item3}}</p>
+			<div ng-repeat="owing in owings | filter: { borrower: username }">
+				<p class="list">{{owing.amount}}</h4>
+			</div>
 		</div>
 		<div class="panels">
 			<div style="margin-top: 5px;">
-			<h4 style="display: inline;">They Owe You</h4><a href="#/addPost"  style="display: inline; margin-left: 10px; color: rgb(0,0,0);"">Add items</a>
+			<h4 style="display: inline;">They Owe You</h4><a href="#/addPost"  style="display: inline; margin-left: 10px; color: rgb(0,0,0);">Add items</a>
 			</div>
-			<h5>name</h5>
-			<p class="list">${{item1}</p>
-			<p class="list">{{item2}}</p>
-			<p class="list">{item3}}</p>
+			<div ng-repeat="owing in owings | filter: { lord: username }">
+				<p class="list">{{owing.amount}}</h4>
+			</div>
 		</div>
 	</div>
 
