@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add Post Page</title>
+	<title>Add Items Page</title>
 </head>
 <body ng-controller="AddPostCtrl">
 
@@ -21,27 +21,37 @@
 		<div class="container" ng-show="success">
 			<div class="row">
 				<div class="alert alert-success" style="color: #728C00; text-align: center;">
-					<strong>Success!</strong> The post has beed added.
+					<strong>Success!</strong> The item has beed added.
 				</div>
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row" style="padding-left: 20px">
 			<div >
-				<div class="form-group" ng-class="{'has-error': postForm.titleTxt.$invalid && postForm.titleTxt.$touched}">
-					<label for="titleTxt">Post Title</label>
-					<input type="text" name="titleTxt" class="form-control" placeholder="Title" ng-model="article.titleTxt" ng-minlength = "5" required="">
-					<small class="help-block" ng-show="postForm.titleTxt.$error.minlength && postForm.titleTxt.$touched">Please enter a valid title for post.</small>
+				<div class="form-group" ng-class="{'has-error': postForm.itemTxt.$invalid && postForm.itemTxt.$touched}">
+					<label for="itemTxt">Item</label>
+					<input type="text" name="itemTxt" class="form-control" placeholder="Item" ng-model="owning.$id" ng-minlength = "5" required="">
+					<small class="help-block" ng-show="postForm.itemTxt.$error.minlength && postForm.itemTxt.$touched">Please enter a valid item.</small>
 				</div>
-				<div class="form-group" ng-class="{'has-error': postForm.postTxt.$invalid && postForm.postTxt.$touched}">
-					<label for="postTxt">Post</label>
-					<textarea name="postTxt" class="form-control" placeholder="Post" ng-model="article.postTxt" ng-minlength="20" required=""></textarea>
-					<small class="help-block" ng-show="postForm.postTxt.$error.minlength && postForm.postTxt.$touched">Please enter a valid post.</small>
+				<div class="form-group" ng-class="{'has-error': postForm.detailTxt.$invalid && postForm.detailTxt.$touched}">
+					<label for="detailTxt">Details</label>
+					<textarea name="detailTxt" class="form-control" placeholder="Detail" ng-model="article.detailTxt" ng-minlength="0" required=""></textarea>
+					<small class="help-block" ng-show="postForm.detailTxt.$error.minlength && postForm.detailTxt.$touched">Please enter a valid detail of the item.</small>
 				</div>
-				<div class="form-group" ng-class="{'has-error': postForm.userTxt.$invalid && postForm.userTxt.$touched}">
-					<label for="userTxt">User</label>
-					<textarea name="userTxt" class="form-control" placeholder="User" ng-model="article.userTxt" ng-minlength="20" required=""></textarea>
-					<small class="help-block" ng-show="postForm.userTxt.$error.minlength && userForm.userTxt.$touched">Please enter a valid user.</small>
+				<div class="form-group" ng-class="{'has-error': postForm.lordTxt.$invalid && postForm.lordTxt.$touched}">
+					<label for="lordTxt">Lender</label>
+					<textarea  type="text"  name="lordTxt" class="form-control" placeholder="Lender" ng-model="article.lordTxt" ng-minlength="5" required=""></textarea>
+					<small class="help-block" ng-show="postForm.lordTxt.$error.minlength && postForm.lordTxt.$touched">Please enter a valid email.</small>
+				</div>
+				<div class="form-group" ng-class="{'has-error': postForm.borrowerTxt.$invalid && postForm.borrowerTxt.$touched}">
+					<label for="borrowerTxt">Borrower</label>
+					<textarea  type="text"  name="borrowerTxt" class="form-control" placeholder="{{username}}" ng-model="article.borrowerTxt" ng-minlength="5" required=""></textarea>
+					<small class="help-block" ng-show="postForm.borrowerTxt.$error.minlength && postForm.borrowerTxt.$touched">Please enter a valid email.</small>
+				</div>
+				<div class="form-group" ng-class="{'has-error': postForm.dateTxt.$invalid && postForm.dateTxt.$touched}">
+					<label for="datext">Date</label>
+					<textarea type="text"  name="dateTxt" class="form-control" placeholder="date" ng-model="article.dateTxt" ng-minlength="5" required=""></textarea>
+					<small class="help-block" ng-show="postForm.dateTxt.$error.minlength && postForm.dateTxt.$touched">Please enter a valid date.</small>
 				</div>
 				<div class="form-group" style="text-align: center;">
 					<button type="submit" class="btn btn-primary" ng-disabled="postForm.$invalid">Add Post</button>
