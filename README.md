@@ -1,5 +1,5 @@
 # They Owe You
-**Solve your problems among your roommates!**:simple_smile:
+**Solve your problems among your roommates!** :smile:
 
 *Demo goes here:* https://trysign-c5368.firebaseapp.com
 
