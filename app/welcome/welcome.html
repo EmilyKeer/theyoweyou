@@ -173,31 +173,29 @@
 	<div id="shadow" style="position:fixed; top:0px; left:0px; height:100vh; width:100vw; background-color:rgba(0,0,0,0.8);display:none" ng-click="toDashboard()">
 </div>
 <div>
-	<table id="roommateDetail" style="position:fixed; top:20vh; left:20vw; height:60vh; width:60vw; background-color:yellow; border: 1px solid black; display:none">
-		<tr><td id="roommateName" style="text-align: center"><p class="roommateNameText"></p><td><tr>
+	<table id="roommateDetail" style="position:fixed; top:20vh; left:20vw; height:60vh; width:60vw; background-color:#F5F5F5; display:none">
+		<tr><td></td><td id="roommateName" style="text-align: center"><p class="roommateNameText"></p><td></tr>
 		<tr>
-			<td style="border: 1px solid black; text-align:center; vertical-align:top">
-				<p class="roommateNameText"></p><p>&nbsp;owes me</p>
+			<td style="text-align:center; vertical-align:top;width:20vw">
+				<font class="roommateNameText"></font><font>&nbsp;owes me</font>:
 				<div ng-repeat="owing in owings | filter: {borrower: userClicked } | filter: {lord : username}">
 					<p>{{owing.amount}}</p>	
 				</div>
 			</td>
-			<td style="border: 1px solid black; text-align:center; vertical-align:top">
-				<p>I owe&nbsp;</p><p class="roommateNameText"></p>
+			<td style="text-align:center; vertical-align:top;width:20vw">
+				<font>I owe&nbsp;</font><font class="roommateNameText"></font>:
 				<div ng-repeat="owing in owings | filter: { lord: userClicked } | filter: {borrower: username}">
 					<p>{{owing.amount}}</p>
 				</div>
-<<<<<<< HEAD
-			<td style="text-align:center; vertical-align:top">
+			</td>
+			<td style="text-align:center; vertical-align:top;width:20vw">
 				<font class="roommateNameText"></font><font>'s Inventory</font>:
 				<div ng-repeat="sharableItem in sharableItems | filter: { userId: userClicked }">
-=======
-			<td style="border: 1px solid black; text-align:center; vertical-align:top">
-				<p class="roommateNameText"></p><p>'s Inventory</p>
-				<div ng-repeat="sharableItem in sharableItems | filter: { owner: userClicked }">
->>>>>>> fdf89d372ef5386314969f43a428bb88656e4bdd
-					<p>{{sharableItem.quantity}} {{sharableItem.item}}</p>
+					<br>
+					<input type="checkbox">&nbsp;&nbsp;{{sharableItem.quantity}} {{sharableItem.item}}<br>
 				</div>
+				<br>
+				<button>I'm taking this!</button>
 			</td>
 		</tr>
 	</table>
