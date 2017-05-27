@@ -98,8 +98,8 @@ angular.module('webApp.welcome', ['ngRoute', 'firebase'])
 		document.getElementById("roommateDetail").style.display="none";
 	}
 	$scope.showRoommateDetail = function(name) {
-		document.getElementById("shadow").style.display="table";
-		document.getElementById("roommateDetail").style.display="table";
+		document.getElementById("shadow").style.display="block";
+		document.getElementById("roommateDetail").style.display="block";
 		$scope.userClicked = name;
 		var roommateNameTexts = document.getElementsByClassName("roommateNameText");
 		for (var i = 0; i < roommateNameTexts.length; i ++) {

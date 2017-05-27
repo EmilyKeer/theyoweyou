@@ -1,5 +1,5 @@
 # They Owe You
-**Solve your problems among your roommates!**:simple_smile:
+**Solve your problems among your roommates!** :smile:
 
 *Demo goes here:* https://trysign-c5368.firebaseapp.com
 
@@ -9,8 +9,16 @@ As University students, most of the time we share an apartment or a room with ot
 ## What it does
 With TheyOweYou, our aim is to offer a tool for roommates to keep track of those things, and help them avoid conflicts. To get started, a roommate creates a _ room _ and becomes its admin. He or she can add other people to this room. On the dashboard, roommates can keep track of each others inventory, see what they borrowed to people, who borrowed what to them and who is in charge of the daily/weekly/monthly chores, if there is one.
 
+## How it works
+**Register here!**
+![Register](https://github.com/EmilyKeer/theyoweyou/blob/master/screenshots/register.png)
+**Login here!**
+![Login](https://github.com/EmilyKeer/theyoweyou/blob/master/screenshots/login.png)
+**Dashboard for your room here!**
+![Home](https://github.com/EmilyKeer/theyoweyou/blob/master/screenshots/home.png)
+
 ## How we built it
-TheyOweYou is a Web App built using HTML, CSS and JavaScript on the frontend, Angular.js and Firebase in the backend.
+TheyOweYou is a Web App built using `HTML`, `CSS` and `JavaScript` on the frontend, `Angular.js` and `Firebase` on the backend.
 
 ## Challenges we ran into
 We had several difficulties installing properly the angular.js web app, especially successfully installing bower and connect bootstrap to the environment. As well, we encountered some challenges with angular as we were lacking of experience with the coding language. The most important one was the lack of time. We had many ideas but not enough time to implement all of them. One of the team member was unable to set up the working environment appropriately on Windows and had to manually commit her changes.

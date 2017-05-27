@@ -4,7 +4,7 @@
 	<title>WebApp Home Page</title>
 </head>
 <body ng-controller="WelcomeCtrl" >
-<div class="container" style="background-color: #7E747F;">
+<div class="container" style="background-color: #7E747F; height: 900px">
 	<div id="nav-bar">
 			<h2 id="title"><b>They Owe You</b></h2>
 			<h3 class="buttons" ng-click="logout()"><a href="#"><b>Logout</b></a></h3>
@@ -30,10 +30,10 @@
 		</div>
 		<div class="panels">
 			<div style="margin-top: 5px;">
-			<h4 style="display: inline;">Weekly Chores</h4><a href="#/addPost"  class="homemadebtn">Add items</a>
+			<h4 style="display: inline;">Weekly Chores</h4><a href="#/addPost"  class="homemadebtn">Add chores</a>
 			</div>
 			<div ng-repeat="chore in chores">
-				<p class="list">{{chore.type}}</h4>
+				<p class="list">+ {{chore.type}}</h4>
 			</div>
 			<!--<p class="list">${{item1}</p>
 			<p class="list">{{item2}}</p>
@@ -68,7 +68,7 @@
 			<h4 style="display: inline;">They Owe You</h4><a href="#/addPost"  class="homemadebtn">Add items</a>
 			</div>
 			<div ng-repeat="owing in owings | filter: { lord: username }">
-				<p class="list">{{owing.amount}}</h4>
+				<p class="list">+ {{owing.amount}}</h4>
 			</div>
 		</div>
 	</div>
@@ -150,19 +150,16 @@
 	  <div class="modal-content">
 	    <span class="close">&times;</span>
 			<h3 class="form-title">Edit You Owe Details</h3>
+			<h3 class="form-title">{{editOwingData.$id}}</h3>
 			<div>
 				<form role="form" style="text-align:center;">
 					<div class="form-group">
-						<label for="Item">Item</label>
-						<input type="text" name="item" class="form-control" ng-model="editOwingData.$id" />
-					</div>
-					<div class="form-group">
 						<label for="amount">Details</label>
-						<textarea name="amount" class="form-control" ng-model="editOwingData.$id.amount"></textarea>
+						<textarea name="amount" class="form-control" ng-model="editOwingData.amount"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="borrower">Borrowed from</label>
-						<input type="text" name="borrower" class="form-control" ng-model="editOwingData.$id.borrower" />
+						<input type="text" name="borrower" class="form-control" ng-model="editOwingData.borrower" />
 					</div>
 				</form>
 			</div>
@@ -175,24 +172,30 @@
 	</div> 
 	<div id="shadow" style="position:fixed; top:0px; left:0px; height:100vh; width:100vw; background-color:rgba(0,0,0,0.8);display:none" ng-click="toDashboard()">
 </div>
-<div class="panels">
-	<table id="roommateDetail" style="position:fixed; top:20vh; left:20vw; height:60vh; width:60vw; background-color:#F5F5F5; border: 0px; display:none">
-		<tr style="height: 20px"><td></td><td id="roommateName" style="text-align: center;"><h2 class="roommateNameText"></h2><td></tr>
-		<tr style="calc(60vh - 20px)">
-			<td style="text-align:center; vertical-align:top">
-				<font class="roommateNameText"></font><font>&nbsp;owes me</font>:
-				<div ng-repeat="owing in owings | filter: {borrower userClicked } | filter: {lord : username}">
+<div>
+	<table id="roommateDetail" style="position:fixed; top:20vh; left:20vw; height:60vh; width:60vw; background-color:yellow; border: 1px solid black; display:none">
+		<tr><td id="roommateName" style="text-align: center"><p class="roommateNameText"></p><td><tr>
+		<tr>
+			<td style="border: 1px solid black; text-align:center; vertical-align:top">
+				<p class="roommateNameText"></p><p>&nbsp;owes me</p>
+				<div ng-repeat="owing in owings | filter: {borrower: userClicked } | filter: {lord : username}">
 					<p>{{owing.amount}}</p>	
 				</div>
 			</td>
-			<td style="text-align:center; vertical-align:top">
-				<font>I owe&nbsp;</font><font class="roommateNameText"></font>:
+			<td style="border: 1px solid black; text-align:center; vertical-align:top">
+				<p>I owe&nbsp;</p><p class="roommateNameText"></p>
 				<div ng-repeat="owing in owings | filter: { lord: userClicked } | filter: {borrower: username}">
 					<p>{{owing.amount}}</p>
 				</div>
+<<<<<<< HEAD
 			<td style="text-align:center; vertical-align:top">
 				<font class="roommateNameText"></font><font>'s Inventory</font>:
 				<div ng-repeat="sharableItem in sharableItems | filter: { userId: userClicked }">
+=======
+			<td style="border: 1px solid black; text-align:center; vertical-align:top">
+				<p class="roommateNameText"></p><p>'s Inventory</p>
+				<div ng-repeat="sharableItem in sharableItems | filter: { owner: userClicked }">
+>>>>>>> fdf89d372ef5386314969f43a428bb88656e4bdd
 					<p>{{sharableItem.quantity}} {{sharableItem.item}}</p>
 				</div>
 			</td>

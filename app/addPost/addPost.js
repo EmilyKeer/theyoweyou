@@ -17,19 +17,22 @@ angular.module('webApp.addPost', ['ngRoute', 'firebase'])
 		$location.path('/home');
 	}
 
-	var ref = firebase.database().ref().child('Articles');
-	$scope.articles = $firebaseArray(ref);
+	var owingsref = firebase.database().ref().child('Owings');
+	$scope.owings = $firebaseArray(owingsref);	
 
 	$scope.createPost = function(){
-		var title = $scope.article.titleTxt;
-		var post = $scope.article.postTxt;
-		var user = $scope.article.userTxt;
-		$scope.articles.$add({
-			title: title,
-			post: post,
-			user: user
-		}).then(function(ref){
-			console.log(ref);
+		var item = $scope.owings.itemTxt;
+		var detail = $scope.owings.detailTxt;
+		var lord = $scope.owings.lordTxt;
+		var borrower = $scope.owings.borrowerTxt;
+		var date = $scope.owings.dateTxt;
+		$scope.owings.$add({
+			amount: detail,//
+			borrower: borrower,
+			date: date,
+			lord: lord
+		}).then(function(owingsref){
+			console.log(owingsref);
 			$scope.success = true;
 			window.setTimeout(function() {
 				$scope.$apply(function(){
