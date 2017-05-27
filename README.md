@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# EngHack 2017 - TheyOweYou is a WebApp built using AngularJS and Firebase
-=======
 # They Owe You
 **Solve your problems among your roommates!** :smile:
 
@@ -13,9 +10,12 @@ As University students, most of the time we share an apartment or a room with ot
 With TheyOweYou, our aim is to offer a tool for roommates to keep track of those things, and help them avoid conflicts. To get started, a roommate creates a _ room _ and becomes its admin. He or she can add other people to this room. On the dashboard, roommates can keep track of each others inventory, see what they borrowed to people, who borrowed what to them and who is in charge of the daily/weekly/monthly chores, if there is one.
 
 ## How it works
-![]()
-![]()
-![]()
+**Register here!**
+![Register](https://github.com/EmilyKeer/theyoweyou/blob/master/screenshots/register.png)
+**Login here!**
+![Login](https://github.com/EmilyKeer/theyoweyou/blob/master/screenshots/login.png)
+**Dashboard for your room here!**
+![Home](https://github.com/EmilyKeer/theyoweyou/blob/master/screenshots/home.png)
 
 ## How we built it
 TheyOweYou is a Web App built using `HTML`, `CSS` and `JavaScript` on the frontend, `Angular.js` and `Firebase` on the backend.
@@ -31,4 +31,3 @@ We learned Firebase and Angular.js in a very short time frame. In particular, ho
 
 ## What's next for They Owe You
 Our plan is to add many more functionality to simplify the cohabitation lifestyle of roommates. For instance, having a better graphic overview of who owes what to whom.
->>>>>>> 5e91b6fc965b3464cdfff8660015dbd87a3c0edb
