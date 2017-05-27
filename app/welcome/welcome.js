@@ -16,16 +16,18 @@ angular.module('webApp.welcome', ['ngRoute', 'firebase'])
 		$location.path('/home');
 	}
 
-	var ref = firebase.database().ref().child('Articles');
-	$scope.articles = $firebaseArray(ref);	
+	var choresref = firebase.database().ref().child('Chores');
+	$scope.chores = $firebaseArray(choresref);	
+	var owingsref = firebase.database().ref().child('Owings');
+	$scope.owings = $firebaseArray(owingsref);	
 
 	$scope.editPost = function(id){
-		var ref = firebase.database().ref().child('Articles/' + id);
+		var ref = firebase.database().ref().child('Chores/' + id);
 		$scope.editPostData = $firebaseObject(ref);
 	};
 
 	$scope.updatePost = function(id){
-		var ref = firebase.database().ref().child('Articles/' + id);
+		var ref = firebase.database().ref().child('Chores/' + id);
 		ref.update({
 			title: $scope.editPostData.title,
 			post: $scope.editPostData.post,
