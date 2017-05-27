@@ -8,23 +8,26 @@
 <div id="nav-bar">
 		<h2 id="title"><b>They Owe You</b></h2>
 		<h3 class="buttons" ng-click="logout()"><a href="#"><b>Logout</b></a></h3>
-		<h3 class="buttons"><a href="#/addPost"><b>Add Post</b></a></h3>
-		<h3 class="buttons" ><a href="#/welcome"><b>Home</b></a></h3>
+		<h3 class="buttons" ><a href="#/welcome"><b><| Back</b></a></h3>
 </div>
 
-<div class="container" ng-show="success">
-	<div class="row">
-		<div class="alert alert-success">
-			<strong>Success!</strong> The post has beed added.
-		</div>
-	</div>
-</div>
 
-<div class="container">
+
+<div class='form-design'>
 	<form role="form" name="postForm" ng-submit="createPost()" novalidate="">
-		<legend>Create Post</legend>
+		<legend><h3 class="form-title">Add Items</h3></legend>
+
+
+		<div class="container" ng-show="success">
+			<div class="row">
+				<div class="alert alert-success" style="color: #728C00; text-align: center;">
+					<strong>Success!</strong> The post has beed added.
+				</div>
+			</div>
+		</div>
+
 		<div class="row">
-			<div class="col-md-5">
+			<div >
 				<div class="form-group" ng-class="{'has-error': postForm.titleTxt.$invalid && postForm.titleTxt.$touched}">
 					<label for="titleTxt">Post Title</label>
 					<input type="text" name="titleTxt" class="form-control" placeholder="Title" ng-model="article.titleTxt" ng-minlength = "5" required="">
@@ -40,7 +43,7 @@
 					<textarea name="userTxt" class="form-control" placeholder="User" ng-model="article.userTxt" ng-minlength="20" required=""></textarea>
 					<small class="help-block" ng-show="postForm.userTxt.$error.minlength && userForm.userTxt.$touched">Please enter a valid user.</small>
 				</div>
-				<div class="form-group">
+				<div class="form-group" style="text-align: center;">
 					<button type="submit" class="btn btn-primary" ng-disabled="postForm.$invalid">Add Post</button>
 				</div>
 			</div>
