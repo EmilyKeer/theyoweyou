@@ -8,46 +8,65 @@
 	<div id="nav-bar">
 			<h2 id="title"><b>They Owe You</b></h2>
 			<h3 class="buttons" ng-click="logout()"><a href="#"><b>Logout</b></a></h3>
-			<h3 class="buttons"><a href="#/addPost"><b>Add Post</b></a></h3>
 			<h3 class="buttons" ><a href="#/welcome"><b>Home</b></a></h3>
 	</div>
 
 	<div class="container" style="background-color: #7E747F; color: rgb(255,255,255)">
 		<h1 style="text-align: center;"><b>Room Name</b></h1>
 		<h3 style="text-align: center;">Welcome Home {{username}} !</h2>
+		<div id="users">
+			<p style="display: inline;">Users</p>
+			<button style="display: inline; color: rgb(0,0,0);">Add roomates</button>
+		</div>
 	</div>
 
-	<div style="float:left; width: 45%; margin-left: 4%; margin-right: 1%;">
+	<div style="float:left; width: 40%; margin-left: 8%; margin-right: 1%;">
 		<div class="panels">
 			<div style="margin-top: 5px;">
-			<h4 style="display: inline;">Roommates</h4>
-			<button style="display: inline; margin-left: 10px; color: rgb(0,0,0);" onclick="showAddRoommate()">Add People</button>
+			<h4 style="display: inline;">Monthly Overview</h4><a href="#/addPost"  class="homemadebtn">Add items</a>
 			</div>
-			<div ng-repeat="roommate in roommates | filter: { email: '!'+username }">
-				<h4 class="list" ng-click="showRoommateDetail(roommate.name)" ng-model="userClicked">{{roommate.name}}</h4>
-			</div>
+			<p class="list"><b>Hydro: </b>${{bill.hydro}}</p>
+			<p class="list"><b>Wifi: </b>${{bill.wifi}}</p>
+			<p class="list"><b>Rent: </b>${{bill.rent}}</p>
 		</div>
 		<div class="panels">
 			<div style="margin-top: 5px;">
-			<h4 style="display: inline;">Weekly Chores</h4><button style="display: inline; margin-left: 10px; color: rgb(0,0,0);">Add items</button>
+			<h4 style="display: inline;">Weekly Chores</h4><a href="#/addPost"  class="homemadebtn">Add items</a>
 			</div>
 			<div ng-repeat="chore in chores">
 				<p class="list">{{chore.type}}</h4>
 			</div>
+			<!--<p class="list">${{item1}</p>
+			<p class="list">{{item2}}</p>
+			<p class="list">{item3}}</p>-->
 		</div>
 	</div>
-	<div style="float:right; width: 45%; margin-left: 1%; margin-right: 4%;">
+	<div style="float:right; width: 40%; margin-left: 1%; margin-right: 8%;">
 		<div class="panels">
 			<div style="margin-top: 5px;">
-			<h4 style="display: inline;">You owe them</h4><a href="#/addPost"  style="display: inline; margin-left: 10px; color: rgb(0,0,0);">Add items</a>
+			<h4 style="display: inline;">You owe them</h4><a href="#/addPost"  class="homemadebtn">Add items</a>
 			</div>
 			<div ng-repeat="owing in owings | filter: { borrower: username }">
-				<p class="list">{{owing.amount}}</h4>
+				<p style="color:rgb(0,0,0): padding-left: 10px;" onclick="openOwingDetails('help')">+ {{owing.amount}}</p>
+				<div id="oweDetail" class="modal">
+					<div class="modal-content">
+	    				<span onclick="closeOwing('help')">&times;</span>
+	    				<div style="text-align: center;">
+	    					<h1 style="padding-top: 0px; margin-top: 0px; color: #352B36;">Details</h3>
+	    					<p><b>Item:</b> {{owing.$id}}</p>
+	    					<p><b>Details:</b> {{owing.amount}}</p>
+	    					<p><b>Borrowed from: </b> {{owing.lord}}</p>
+	    					<p><b>Date: </b>{{owing.date}}</p>
+	    					<button type="submit" class="btn btn-sm btn-primary" ng-click="editYouOwe(owing.$id)" data-target="#editModal" data-toggle="modal">Edit</button>
+							<button type="submit" class="btn btn-sm btn-danger" ng-click="deleteCnf(owing)" data-target="#deleteModal" data-toggle="modal">Delete</button>
+	    				</div>
+	    			</div>
+				</div>
 			</div>
 		</div>
 		<div class="panels">
 			<div style="margin-top: 5px;">
-			<h4 style="display: inline;">They Owe You</h4><a href="#/addPost"  style="display: inline; margin-left: 10px; color: rgb(0,0,0);">Add items</a>
+			<h4 style="display: inline;">They Owe You</h4><a href="#/addPost"  class="homemadebtn">Add items</a>
 			</div>
 			<div ng-repeat="owing in owings | filter: { lord: username }">
 				<p class="list">{{owing.amount}}</h4>
@@ -55,92 +74,107 @@
 		</div>
 	</div>
 
+	
+
+
 	<div class="container">
 		<div class="row" ng-repeat="article in articles">
 			<div class="col-md-12 well well-sm">
 				<h4>{{article.title}}</h4>
 				<p>{{article.post}}</p>
 				<p>{{article.user}}</p>
-				<button type="submit" class="btn btn-sm btn-primary" ng-click="editPost(article.$id)" data-target="#editModal" data-toggle="modal">Edit</button>
-				<button type="submit" class="btn btn-sm btn-danger" ng-click="deleteCnf(article)" data-target="#deleteModal" data-toggle="modal">Delete</button>
+				
 			</div>
 		</div>
 	</div>
 
-	<div class="container">
-		<div id="editModal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4>Edit Post Details</h4>
-					</div>
-					<div class="modal-body">
-						<form role="form">
-							<div class="form-group">
-								<label for="title">Title</label>
-								<input type="text" name="title" class="form-control" ng-model="editPostData.title" />
-							</div>
-							<div class="form-group">
-								<label for="post">Post</label>
-								<textarea name="post" class="form-control" ng-model="editPostData.post"></textarea>
-							</div>
-							<div class="form-group">
-								<label for="title">User</label>
-								<input type="text" name="title" class="form-control" ng-model="editPostData.user" />
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-sm btn-primary" ng-click="updatePost(editPostData.$id)">Update Post</button>
-						<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<div class="container">
-		<div id="deleteModal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header"></div>
-					<div class="modal-body">
-						<p>Are you sure you want to delete the post?</p>
+	 <!-- Trigger/Open The Modal -->
+	<button id="BtnEdit">Edit</button>
+
+	<!-- The Modal -->
+	<div id="ModalEdit" class="modal">
+
+	  <!-- Modal content -->
+	  <div class="modal-content">
+	    <span class="close">&times;</span>
+			<h3 class="form-title">Edit Post Details</h3>
+			<div>
+				<form role="form" style="text-align:center;">
+					<div class="form-group">
+						<label for="title">Title</label>
+						<input type="text" name="title" class="form-control" ng-model="editPostData.title" />
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-sm btn-danger" ng-click="deletePost(deleteArticle)">Delete</button>
-						<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
+					<div class="form-group">
+						<label for="post">Post</label>
+						<textarea name="post" class="form-control" ng-model="editPostData.post"></textarea>
 					</div>
-				</div>
+					<div class="form-group">
+						<label for="title">User</label>
+						<input type="text" name="title" class="form-control" ng-model="editPostData.user" />
+					</div>
+				</form>
 			</div>
-		</div>
-	</div>
-</div>
-<div id="shadow" style="position:fixed; top:0px; left:0px; height:100vh; width:100vw; background-color:rgba(0,0,0,0.8);display:none" ng-click="toDashboard()">
-</div>
-<div>
-	<table id="roommateDetail" style="position:fixed; top:20vh; left:20vw; height:60vh; width:60vw; background-color:yellow; border: 1px solid black; display:none">
-		<tr><td id="roommateName" style="text-align: center"><p class="roommateNameText"></p><td><tr>
-		<tr>
-			<td style="border: 1px solid black; text-align:center; vertical-align:top">
-				<p class="roommateNameText"></p><p>&nbsp;owes me</p>
-				<div ng-repeat="owing in owings | filter: {borrower userClicked } | filter: {lord : username}">
-					<p>{{owing.amount}}</p>	
-				</div>
-			</td>
-			<td style="border: 1px solid black; text-align:center; vertical-align:top">
-				<p>I owe&nbsp;</p><p class="roommateNameText"></p>
-				<div ng-repeat="owing in owings | filter: { lord: userClicked } | filter: {borrower: username}">
-					<p>{{owing.amount}}</p>
-				</div>
-			<td style="border: 1px solid black; text-align:center; vertical-align:top">
-				<p class="roommateNameText"></p><p>'s Inventory</p>
-				<div ng-repeat="sharableItem in sharableItems | filter: { owner: userClicked }">
-					<p>{{sharableItem.quantity}} {{sharableItem.item}}</p>
-				</div>
-			</td>
-		</tr>
-	</table>
+			<div class="modal-footer" style="text-align: center;">
+				<button type="button" class="btn btn-sm btn-primary" ng-click="updatePost(editPostData.$id)">Update Post</button>
+				<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
+			</div>
+	  </div>
+
+	</div> 
+
+	<button id="myBtn">Delete</button>
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+	  <!-- Modal content -->
+	  <div class="modal-content">
+	    <span class="close">&times;</span>
+			<h3 class="form-title">Warning</h3>
+			<div>
+				<p style="text-align: center;">Are you sure you want to delete the post?</p>
+			</div>
+			<div class="modal-footer" style="text-align: center;">
+				<button type="button" class="btn btn-sm btn-danger" ng-click="deletePost(deleteArticle)">Delete</button>
+				<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
+			</div>
+	  </div>
+
+	</div> 
+
+
+
+	<!-- Edit From You Owe -->
+	<div id="EditYouOwe" class="modal">
+
+	  <!-- Modal content -->
+	  <div class="modal-content">
+	    <span class="close">&times;</span>
+			<h3 class="form-title">Edit You Owe Details</h3>
+			<div>
+				<form role="form" style="text-align:center;">
+					<div class="form-group">
+						<label for="Item">Item</label>
+						<input type="text" name="item" class="form-control" ng-model="editOwingData.$id" />
+					</div>
+					<div class="form-group">
+						<label for="amount">Details</label>
+						<textarea name="amount" class="form-control" ng-model="editOwingData.$id.amount"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="borrower">Borrowed from</label>
+						<input type="text" name="borrower" class="form-control" ng-model="editOwingData.$id.borrower" />
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer" style="text-align: center;">
+				<button type="button" class="btn btn-sm btn-primary" ng-click="updatePost(editOwingData.$id)">Update Post</button>
+				<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
+			</div>
+	  </div>
+
+	</div> 
+
 </div>
 </body>
 </html>
