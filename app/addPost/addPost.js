@@ -21,11 +21,10 @@ angular.module('webApp.addPost', ['ngRoute', 'firebase'])
 	$scope.owings = $firebaseArray(owingsref);	
 
 	$scope.createPost = function(){
-		var item = $scope.owings.itemTxt;
-		var detail = $scope.owings.detailTxt;
-		var lord = $scope.owings.lordTxt;
-		var borrower = $scope.owings.borrowerTxt;
-		var date = $scope.owings.dateTxt;
+		var detail = $scope.owing.detailTxt;
+		var lord = $scope.owing.lordTxt;
+		var borrower = $scope.owing.borrowerTxt;
+		var date = $scope.owing.dateTxt;
 		$scope.owings.$add({
 			amount: detail,//
 			borrower: borrower,
