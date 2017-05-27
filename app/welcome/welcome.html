@@ -12,7 +12,7 @@
 	</div>
 
 	<div class="container" style="background-color: #7E747F; color: rgb(255,255,255)">
-		<h1 style="text-align: center;"><b>Waterloo Goose Suite</b></h1>
+		<h1 style="text-align: center;"><b>Waterloo Geese Suite</b></h1>
 		<h3 style="text-align: center;">Welcome Home {{username}} !</h2>
 		<div id="users">
 			<p style="display: inline;">roxane@example.com, keer@example.com, derek@example.com</p>
@@ -65,8 +65,7 @@
 			<span onclick="closeOwing('help')">&times;</span>
 			<div style="text-align: center;">
 				<h1 style="padding-top: 0px; margin-top: 0px; color: #352B36;">Details</h3>
-				<p><b>Item:</b> {{owingval.$id}}</p>
-				<p><b>Details:</b> {{owingval.amount}}</p>
+				<p><b>Item and details:</b> {{owingval.amount}}</p>
 				<p><b>Borrowed from: </b> {{owingval.lord}}</p>
 				<p><b>Landed to: </b> {{owingval.borrower}}</p>
 				<p><b>Date: </b>{{owingval.date}}</p>
@@ -76,7 +75,7 @@
 		</div>
 	</div>
 
-	/*
+	<!--
 	<div class="container">
 		<div class="row" ng-repeat="article in articles">
 			<div class="col-md-12 well well-sm">
@@ -87,7 +86,7 @@
 			</div>
 		</div>
 	</div>
-
+	-->
 
 	 <!-- Trigger/Open The Modal -->
 	<!--<button id="BtnEdit">Edit</button>-->
@@ -174,7 +173,7 @@
 </div>
 <div>
 	<table id="roommateDetail" style="position:fixed; top:20vh; left:20vw; height:60vh; width:60vw; background-color:#F5F5F5; display:none">
-		<tr><td></td><td id="roommateName" style="text-align: center"><p class="roommateNameText"></p><td></tr>
+		<tr><td></td><td id="roommateName" style="text-align: center"><b><p class="roommateNameText"></p></b><td></tr>
 		<tr>
 			<td style="text-align:center; vertical-align:top;width:20vw">
 				<font class="roommateNameText"></font><font>&nbsp;owes me</font>:
