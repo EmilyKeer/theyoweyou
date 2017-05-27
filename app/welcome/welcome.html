@@ -192,7 +192,7 @@
 				</div>
 			<td style="text-align:center; vertical-align:top">
 				<font class="roommateNameText"></font><font>'s Inventory</font>:
-				<div ng-repeat="sharableItem in sharableItems | filter: { owner: userClicked }">
+				<div ng-repeat="sharableItem in sharableItems | filter: { userId: userClicked }">
 					<p>{{sharableItem.quantity}} {{sharableItem.item}}</p>
 				</div>
 			</td>
