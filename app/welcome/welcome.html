@@ -15,20 +15,17 @@
 	<div class="container" style="background-color: #7E747F; color: rgb(255,255,255)">
 		<h1 style="text-align: center;"><b>Room Name</b></h1>
 		<h3 style="text-align: center;">Welcome Home {{username}} !</h2>
-		<div id="users">
-			<p style="display: inline;">Users</p>
-			<button style="display: inline; color: rgb(0,0,0);">Add roomates</button>
-		</div>
 	</div>
 
 	<div style="float:left; width: 45%; margin-left: 4%; margin-right: 1%;">
 		<div class="panels">
 			<div style="margin-top: 5px;">
-			<h4 style="display: inline;">Monthly Overview</h4><button style="display: inline; margin-left: 10px; color: rgb(0,0,0);">Add items</button>
+			<h4 style="display: inline;">Roommates</h4>
+			<button style="display: inline; margin-left: 10px; color: rgb(0,0,0);" onclick="showAddRoommate()">Add People</button>
 			</div>
-			<p class="list"><b>Hydro: </b>${{bill.hydro}}</p>
-			<p class="list"><b>Wifi: </b>${{bill.wifi}}</p>
-			<p class="list"><b>Rent: </b>${{bill.rent}}</p>
+			<div ng-repeat="roommate in roommates | filter: { email: '!'+username }">
+				<h4 class="list" ng-click="showRoommateDetail(roommate.name)" ng-model="userClicked">{{roommate.name}}</h4>
+			</div>
 		</div>
 		<div class="panels">
 			<div style="margin-top: 5px;">
@@ -37,9 +34,6 @@
 			<div ng-repeat="chore in chores">
 				<p class="list">{{chore.type}}</h4>
 			</div>
-			<!--<p class="list">${{item1}</p>
-			<p class="list">{{item2}}</p>
-			<p class="list">{item3}}</p>-->
 		</div>
 	</div>
 	<div style="float:right; width: 45%; margin-left: 1%; margin-right: 4%;">
@@ -121,6 +115,32 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div id="shadow" style="position:fixed; top:0px; left:0px; height:100vh; width:100vw; background-color:rgba(0,0,0,0.8);display:none" ng-click="toDashboard()">
+</div>
+<div>
+	<table id="roommateDetail" style="position:fixed; top:20vh; left:20vw; height:60vh; width:60vw; background-color:yellow; border: 1px solid black; display:none">
+		<tr><td id="roommateName" style="text-align: center"><p class="roommateNameText"></p><td><tr>
+		<tr>
+			<td style="border: 1px solid black; text-align:center; vertical-align:top">
+				<p class="roommateNameText"></p><p>&nbsp;owes me</p>
+				<div ng-repeat="owing in owings | filter: {borrower userClicked } | filter: {lord : username}">
+					<p>{{owing.amount}}</p>	
+				</div>
+			</td>
+			<td style="border: 1px solid black; text-align:center; vertical-align:top">
+				<p>I owe&nbsp;</p><p class="roommateNameText"></p>
+				<div ng-repeat="owing in owings | filter: { lord: userClicked } | filter: {borrower: username}">
+					<p>{{owing.amount}}</p>
+				</div>
+			<td style="border: 1px solid black; text-align:center; vertical-align:top">
+				<p class="roommateNameText"></p><p>'s Inventory</p>
+				<div ng-repeat="sharableItem in sharableItems | filter: { owner: userClicked }">
+					<p>{{sharableItem.quantity}} {{sharableItem.item}}</p>
+				</div>
+			</td>
+		</tr>
+	</table>
 </div>
 </body>
 </html>

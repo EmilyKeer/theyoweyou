@@ -20,6 +20,12 @@ angular.module('webApp.welcome', ['ngRoute', 'firebase'])
 	$scope.chores = $firebaseArray(choresref);	
 	var owingsref = firebase.database().ref().child('Owings');
 	$scope.owings = $firebaseArray(owingsref);	
+	var roommatesref = firebase.database().ref().child('Roommates');
+	$scope.roommates = $firebaseArray(roommatesref);
+	var sharableItemsref = firebase.database().ref().child('SharableItems');
+	$scope.sharableItems = $firebaseArray(sharableItemsref);
+
+	$scope.userClicked = {"default": "default"};
 
 	$scope.editPost = function(id){
 		var ref = firebase.database().ref().child('Chores/' + id);
@@ -53,4 +59,46 @@ angular.module('webApp.welcome', ['ngRoute', 'firebase'])
 	$scope.logout = function(){
 		CommonProp.logoutUser();
 	}
+
+	$scope.userClicked;
+
+	$scope.toDashboard = function() {
+		document.getElementById("shadow").style.display="none";
+		document.getElementById("roommateDetail").style.display="none";
+	}
+	$scope.showRoommateDetail = function(name) {
+		document.getElementById("shadow").style.display="block";
+		document.getElementById("roommateDetail").style.display="block";
+		$scope.userClicked = name;
+		var roommateNameTexts = document.getElementsByClassName("roommateNameText");
+		for (var i = 0; i < roommateNameTexts.length; i ++) {
+			roommateNameTexts[i].innerHTML = name;
+		}
+	}
+	$scope.showAddRoommate = function() {
+		document.getElementById("shadow").style.display="block";
+
+	}
+
 }])
+
+
+/*function toDashboard() {
+	document.getElementById("shadow").style.display="none";
+	document.getElementById("roommateDetail").style.display="none";
+}
+function showRoommateDetail(tag) {
+	document.getElementById("shadow").style.display="block";
+	document.getElementById("roommateDetail").style.display="block";
+	// $scope.userClicked=tag.innerHTML;
+	$scope.userClicked = {"default": "no"};
+	console.log(tag.innerHTML);
+	var roommateNameTexts = document.getElementsByClassName("roommateNameText");
+	for (var i = 0; i < roommateNameTexts.length; i ++) {
+		roommateNameTexts[i].innerHTML = userClicked;
+	}
+}
+function showAddRoommate() {
+	document.getElementById("shadow").style.display="block";
+
+}*/
