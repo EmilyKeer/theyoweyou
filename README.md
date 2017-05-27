@@ -31,4 +31,3 @@ We learned Firebase and Angular.js in a very short time frame. In particular, ho
 
 ## What's next for They Owe You
 Our plan is to add many more functionality to simplify the cohabitation lifestyle of roommates. For instance, having a better graphic overview of who owes what to whom.
->>>>>>> 5e91b6fc965b3464cdfff8660015dbd87a3c0edb
