@@ -41,6 +41,11 @@
 					<textarea name="postTxt" class="form-control" placeholder="Post" ng-model="article.postTxt" ng-minlength="20" required=""></textarea>
 					<small class="help-block" ng-show="postForm.postTxt.$error.minlength && postForm.postTxt.$touched">Please enter a valid post.</small>
 				</div>
+				<div class="form-group" ng-class="{'has-error': postForm.userTxt.$invalid && postForm.userTxt.$touched}">
+					<label for="userTxt">User</label>
+					<textarea name="userTxt" class="form-control" placeholder="User" ng-model="article.userTxt" ng-minlength="20" required=""></textarea>
+					<small class="help-block" ng-show="postForm.userTxt.$error.minlength && userForm.userTxt.$touched">Please enter a valid user.</small>
+				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary" ng-disabled="postForm.$invalid">Add Post</button>
 				</div>

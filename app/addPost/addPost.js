@@ -23,9 +23,11 @@ angular.module('webApp.addPost', ['ngRoute', 'firebase'])
 	$scope.createPost = function(){
 		var title = $scope.article.titleTxt;
 		var post = $scope.article.postTxt;
+		var user = $scope.article.userTxt;
 		$scope.articles.$add({
 			title: title,
-			post: post
+			post: post,
+			user: user
 		}).then(function(ref){
 			console.log(ref);
 			$scope.success = true;
